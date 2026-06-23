@@ -53,6 +53,7 @@ react-firebase-contact-app/
 │   ├── main.jsx
 │   └── index.css
 │
+├── .env
 ├── .gitignore
 ├── package.json
 ├── vite.config.js
@@ -68,6 +69,11 @@ https://github.com/user-attachments/assets/836171a2-1c6d-44b3-8ed3-e1c00ac37d78
 ---
 
 ## ⚙️ Installation
+
+### Prerequisites
+
+- Node.js (v18 or later recommended)
+- npm
 
 ### 1. Clone the repository
 
@@ -89,41 +95,33 @@ npm install
 
 ### 4. Create a Firebase project
 
-* Go to the Firebase Console.
-* Create a new project.
-* Enable **Cloud Firestore**.
-* Register a Web App.
-* Copy your Firebase configuration.
+- Go to the Firebase Console.
+- Create a new project.
+- Enable **Cloud Firestore**.
+- Register a Web App.
+- Copy your Firebase configuration.
 
-### 5. Configure Firebase
+### 5. Configure Environment Variables
 
 Create a file named:
 
 ```text
-src/config/firebase.js
+.env
 ```
 
-and add your Firebase configuration.
+Add the following variables:
 
-Example:
-
-```javascript
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-};
-
-const app = initializeApp(firebaseConfig);
-
-export const db = getFirestore(app);
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
 ```
+Replace the placeholder values with the configuration from your Firebase project.
+
+> **Note:** The `.env` file is ignored by Git using `.gitignore`, so you'll need to create it manually after cloning the repository.
 
 ### 6. Start the development server
 
@@ -131,14 +129,13 @@ export const db = getFirestore(app);
 npm run dev
 ```
 
-Open:
+Open your browser and visit:
 
 ```
 http://localhost:5173
 ```
 
 ---
-
 ## 📦 Dependencies
 
 * React
